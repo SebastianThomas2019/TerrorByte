@@ -27,6 +27,7 @@ public:
     bool    driveInDirection(direction_t direction);
     void    scanForTarget();
     bool    isActive();
+    void    katapult();
 
 private:
     void    measureDistance();
