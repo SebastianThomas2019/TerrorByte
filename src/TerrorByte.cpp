@@ -169,3 +169,7 @@ void   TerrorByte::disableBuzzer()
     //This methode still needs to be implemented.
 };
 
+void TerrorByte::katapult()
+{
+
+};
