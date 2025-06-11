@@ -37,13 +37,6 @@ private:
 
     const int DURATION_FOR_MOVEMENT = 3; // seconds
     const int FREQUENZ_BUZZER_DRIVING_BACKWARDS = 950; //Hz
-    const int PIN_ULTRASONIC_SENSOR_LEFT = 6;
-    const int PIN_ULTRASONIC_SENSOR_RIGHT = 7;
-    const int PIN_ULTRASONIC_SENSOR_FRONT = 8;
-    const int PIN_ULTRASONIC_SENSOR_BACK = 12;
-    const int PIN_LEDS_FRONT = 5;
-    const int PIN_LEDS_BACK = 4;
-    const int PIN_BUZZER = 13;
 
     RgbLed     *ptr_statusRgb;
     bool        m_poweredON;

@@ -1,5 +1,6 @@
 #include "TerrorByte.h"
 #include "protothreads.h"
+#include "pins.h"
 #include <iostream>
 #include <string.h>
 
@@ -12,28 +13,25 @@ TerrorByte::TerrorByte()
     , m_spaceFrontSide(0)
     , m_spaceBackSide(0)
 {
-    pinMode(PIN_LEDS_FRONT, OUTPUT);
-    pinMode(PIN_LEDS_BACK, OUTPUT);
-    pinMode(PIN_BUZZER, OUTPUT);
+    pinMode(pin::LEDS_FRONT_AND_BACK, OUTPUT);
+    pinMode(pin::BUZZER, OUTPUT);
 };
 
-void TerrorByte::powerButtonPressed()
+void TerrorByte::powerButtonPressed()    
 {
     if (m_poweredON)
     {
         m_poweredON = false;
         ptr_statusRgb->setColor(RgbLed::WHITE);
 
-        digitalWrite(PIN_LEDS_FRONT, LOW);
-        digitalWrite(PIN_LEDS_BACK, LOW);
+        digitalWrite(pin::LEDS_FRONT_AND_BACK, LOW);
     }
     else
     {
         m_poweredON = true;
         ptr_statusRgb->setColor(RgbLed::GREEN);
 
-        digitalWrite(PIN_LEDS_FRONT, HIGH);
-        digitalWrite(PIN_LEDS_BACK, HIGH);
+        digitalWrite(pin::LEDS_FRONT_AND_BACK, HIGH);
     }
 };
 
@@ -115,10 +113,10 @@ void  TerrorByte::measureDistance()
 {
     int sensorPins[4];
     
-    sensorPins[FRONT] = PIN_ULTRASONIC_SENSOR_FRONT;
-    sensorPins[BACK]  = PIN_ULTRASONIC_SENSOR_BACK;
-    sensorPins[LEFT]  = PIN_ULTRASONIC_SENSOR_LEFT;
-    sensorPins[RIGHT] = PIN_ULTRASONIC_SENSOR_RIGHT;
+    sensorPins[FRONT] = pin::ULTRASONIC_SENSOR_FRONT;
+    sensorPins[BACK]  = pin::ULTRASONIC_SENSOR_BACK;
+    sensorPins[LEFT]  = pin::ULTRASONIC_SENSOR_LEFT;
+    sensorPins[RIGHT] = pin::ULTRASONIC_SENSOR_RIGHT;
     
     int *sensorData[4];
 
@@ -150,7 +148,7 @@ void   TerrorByte::activateBuzzer(int hz, int duration)
 {
     if (!duration)
     {
-        tone(PIN_BUZZER, duration);
+        tone(pin::BUZZER, duration);
         return;
     }
     //else
